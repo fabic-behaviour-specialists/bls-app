@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="VideoSplash">
+  <name>VideoSplash</name>
+  <publisher>Xamarin Inc</publisher>
+  <publisher-url>http://xamarin.com</publisher-url>
+  <version>1.0.0.0</version>
+  <summary>VideoSplash is a video-based UIViewController.</summary>
+  <samples>
+    <sample id="VideoSplashSample">
+      <name>Storyboard Sample</name>
+      <summary>Storyboard Sample</summary>
+    </sample>
+    <sample id="VideoSplashSample-Classic">
+      <name>Classic API Sample</name>
+      <summary>Classic API Sample</summary>
+    </sample>
+  </samples>
+</component>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="ParallaxController">
+  <name>ParallaxController</name>
+  <publisher>Xpand-IT</publisher>
+  <publisher-url>http://www.xpand-it.com</publisher-url>
+  <version>1.0.0</version>
+  <summary>ParallaxViewController is a UIViewController container designed for presenting multiple images in a single view.</summary>
+  <screenshots>
+    <img src="screenshots/screenshot1.png" title="screenshot1" />
+  </screenshots>
+  <samples>
+    <sample id="Sample.iOS">
+      <name>iOS Sample</name>
+      <summary>iOS Sample</summary>
+    </sample>
+  </samples>
+</component>

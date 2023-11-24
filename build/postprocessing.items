@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="BodyLifeSkillsPlatformiOS.app/BodyLifeSkillsPlatformiOS">
+      <BCSymbolMapName>BodyLifeSkillsPlatformiOS.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>false</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>BodyLifeSkillsPlatformiOS.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>\Users\joshuacampbell\Library\Caches\Xamarin\mtbs\builds\BodyLifeSkillsPlatform.iOS\774fea55f267841928c6904400efe47d8a9c7c0d63590e81115d1fa91e8a53bb\obj\iPhoneSimulator\Debug\mtouch-symbols.list</SymbolFile>
+      <DSymName>BodyLifeSkillsPlatformiOS.app.dSYM</DSymName>
+      <SourceProjectPath>C:\dev\source\repos\Fabic\BLS-App\BodyLifeSkillsPlatform.iOS</SourceProjectPath>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>
