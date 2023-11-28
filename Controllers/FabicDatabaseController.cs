@@ -1,13 +1,16 @@
 ﻿using Fabic.Core.Helpers;
 using Fabic.Core.Models;
 using Fabic.iOS.Controllers;
+using Microsoft.Data.Sqlite;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using RestSharp;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +28,12 @@ namespace Fabic.Core.Controllers
             {
                 _Client = new MobileServiceClient(MOBILE_APP_URL, new AzureHandler());
                 _Store = new MobileServiceSQLiteStore(iOS.Controllers.SecurityController.CurrentUser.UserID + ".db");
+
+
+                var connectionStore = _Store.GetType().GetField("connection", BindingFlags.Instance | BindingFlags.NonPublic);
+                sqlite3 value = (sqlite3)connectionStore.GetValue(_Store); // Get the property (will be 42)
+
+
                 _Store.DefineTable<BehaviourScale>();
                 _Store.DefineTable<BehaviourScaleItem>();
                 _Store.DefineTable<IChooseChart>();
@@ -52,6 +61,8 @@ namespace Fabic.Core.Controllers
                 {
                     IMobileServiceSyncTable<FabicBehaviourScale> table = _Client.GetSyncTable<FabicBehaviourScale>();
                     IMobileServiceSyncTable<FabicBehaviourScaleItem> itemsTable = _Client.GetSyncTable<FabicBehaviourScaleItem>();
+                    IMobileServiceSyncTable<BehaviourScale> table2 = _Client.GetSyncTable<BehaviourScale>();
+                    IMobileServiceSyncTable<BehaviourScaleItem> itemsTable2 = _Client.GetSyncTable<BehaviourScaleItem>();
                     List<FabicBehaviourScale> fabicScales = new List<FabicBehaviourScale>();
                     List<FabicBehaviourScaleItem> fabicScaleItems = new List<FabicBehaviourScaleItem>();
                     if (Fabic.iOS.External.Reachability.InternetConnectionStatus() != Fabic.iOS.External.NetworkStatus.NotReachable)
@@ -63,6 +74,11 @@ namespace Fabic.Core.Controllers
                         Task.Run(() => { fabicScaleItems = itemsTable.ToListAsync().Result; }).Wait();
                         if (fabicScaleItems.Count == 0)
                             Task.Run(() => itemsTable.PullAsync("bsiFabic", itemsTable.Where(x => x.Archived == false))).Wait();
+
+                        //Task.Run(() => { var res = table2.Where(x => x.FabicExample == false && x.UserID == SecurityController.CurrentUser.UserID).ToListAsync().Result; }).Wait();
+                       // if (fabicScales.Count == 0)
+                        Task.Run(() => table2.PullAsync("bs", table2.Where(x => x.FabicExample == false && x.UserID == SecurityController.CurrentUser.UserID))).Wait();
+                        Task.Run(() => itemsTable2.PullAsync("bsi", itemsTable2.Where(x => x.UserID == SecurityController.CurrentUser.UserID))).Wait();
                     }
 
                     //if (false)//fabicScales.Count == 0)
@@ -895,6 +911,8 @@ namespace Fabic.Core.Controllers
                 {
                     IMobileServiceSyncTable<FabicIChooseChart> table = _Client.GetSyncTable<FabicIChooseChart>();
                     IMobileServiceSyncTable<FabicIChooseChartItem> itemsTable = _Client.GetSyncTable<FabicIChooseChartItem>();
+                    IMobileServiceSyncTable<IChooseChart> table2 = _Client.GetSyncTable<IChooseChart>();
+                    IMobileServiceSyncTable<IChooseChartItem> itemsTable2 = _Client.GetSyncTable<IChooseChartItem>();
                     IMobileServiceSyncTable<ItemHighlight> itemHightlightTable = _Client.GetSyncTable<ItemHighlight>();
                     List<FabicIChooseChart> fabicScales = new List<FabicIChooseChart>();
                     List<FabicIChooseChartItem> fabicScaleItems = new List<FabicIChooseChartItem>();
@@ -912,6 +930,8 @@ namespace Fabic.Core.Controllers
                             Task.Run(() => itemsTable.PullAsync("icciFabic", itemsTable.Where(x => x.UserID == string.Empty))).Wait();
                             Task.Run(() => itemHightlightTable.PullAsync("iccihFabic", itemHightlightTable.Where(x => (x.IChooseChart != string.Empty && x.IChooseChart != null) || (x.IChooseChartItem != string.Empty && x.IChooseChartItem != null)))).Wait();
                         }
+                        Task.Run(() => table2.PullAsync("ic", table2.Where(x => x.FabicExample == false && x.UserID == SecurityController.CurrentUser.UserID))).Wait();
+                        Task.Run(() => itemsTable2.PullAsync("icc", itemsTable2.Where(x => x.UserID == SecurityController.CurrentUser.UserID))).Wait();
                     }
                     //if (false)//fabicScales.Count == 0)
                     //{
