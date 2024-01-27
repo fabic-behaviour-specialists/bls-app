@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3E6DEF6E-79EC-46E3-9030-9A4769DFE4E8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fabic.Cloud</RootNamespace>
+    <AssemblyName>Fabic.Cloud</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AboutBLSVideoController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IChooseChartReportController.cs" />
+    <Compile Include="Controllers\FabicBehaviourScaleItemController.cs" />
+    <Compile Include="Controllers\FabicIChooseChartItemController.cs" />
+    <Compile Include="Controllers\FabicIChooseChartController.cs" />
+    <Compile Include="Controllers\FabicBehaviourScaleController.cs" />
+    <Compile Include="Controllers\AboutFabicVideoController.cs" />
+    <Compile Include="Controllers\ItemHighlightIChooseChartItemQueryController.cs" />
+    <Compile Include="Controllers\ItemHighlightIChooseChartQueryController.cs" />
+    <Compile Include="Controllers\ItemHighlightController.cs" />
+    <Compile Include="Controllers\IChooseChartItemController.cs" />
+    <Compile Include="Controllers\IChooseChartController.cs" />
+    <Compile Include="Controllers\BehaviourScaleItemController.cs" />
+    <Compile Include="Controllers\BehaviourScaleController.cs" />
+    <Compile Include="Controllers\BehaviourScaleReportController.cs" />
+    <Compile Include="Helpers\IQueryableExtension.cs" />
+    <Compile Include="Helpers\TableControllerExtensions.cs" />
+    <Compile Include="Helpers\XRControlExtensions.cs" />
+    <Compile Include="Migrations\201711180916311_InitialCreate.cs" />
+    <Compile Include="Migrations\201711180916311_InitialCreate.Designer.cs">
+      <DependentUpon>201711180916311_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711210206515_1.cs" />
+    <Compile Include="Migrations\201711210206515_1.Designer.cs">
+      <DependentUpon>201711210206515_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801270245085_YouTube.cs" />
+    <Compile Include="Migrations\201801270245085_YouTube.Designer.cs">
+      <DependentUpon>201801270245085_YouTube.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801281540289_Name.cs" />
+    <Compile Include="Migrations\201801281540289_Name.Designer.cs">
+      <DependentUpon>201801281540289_Name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\MobileServiceContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BodyLifeSkillsChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IChooseChartReportItem2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IChooseChartReportItem1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BodyLifeSkillsChartItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IChooseChartReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\IChooseChartReport.Designer.cs">
+      <DependentUpon>IChooseChartReport.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bls-chart-body-examples.png" />
+    <Content Include="Resources\bls-chart-body-explanation.png" />
+    <Content Include="Resources\bls-chart-colours.png" />
+    <Content Include="Resources\bls-chart-life-examples.png" />
+    <Content Include="Resources\bls-chart-life-explanation.png" />
+    <Content Include="Resources\fabic-footer-export.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\I-choose-chart-title.png" />
+    <Content Include="Resources\i-choose-chart.png" />
+    <Content Include="Resources\I_Choose_Chart_CompletedChart.png" />
+    <Content Include="Resources\I_Choose_Chart_Option1_Behaviours.png" />
+    <Content Include="Resources\I_Choose_Chart_Option1_Outcomes.png" />
+    <Content Include="Resources\I_Choose_Chart_Option2_Behaviours.png" />
+    <Content Include="Resources\I_Choose_Chart_Option2_Outcomes.png" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FabicApp - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711180916311_InitialCreate.resx">
+      <DependentUpon>201711180916311_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210206515_1.resx">
+      <DependentUpon>201711210206515_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801270245085_YouTube.resx">
+      <DependentUpon>201801270245085_YouTube.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801281540289_Name.resx">
+      <DependentUpon>201801281540289_Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\BodyLifeSkillsChart.resx">
+      <DependentUpon>BodyLifeSkillsChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IChooseChartReportItem2.resx">
+      <DependentUpon>IChooseChartReportItem2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IChooseChartReportItem1.resx">
+      <DependentUpon>IChooseChartReportItem1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BodyLifeSkillsChartItem.resx">
+      <DependentUpon>BodyLifeSkillsChartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\IChooseChartReport.resx">
+      <DependentUpon>IChooseChartReport.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Mobile.Server">
+      <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Server.Tables">
+      <Version>2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52645</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/BodyLifeSkillsPlatform.Cloud</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.2\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.2\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+    <Error Condition="!Exists('..\packages\Sentry.3.26.1\build\Sentry.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Sentry.3.26.1\build\Sentry.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.2\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.2\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+  <Import Project="..\packages\Sentry.3.26.1\build\Sentry.targets" Condition="Exists('..\packages\Sentry.3.26.1\build\Sentry.targets')" />
+</Project>

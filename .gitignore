@@ -5,3 +5,9 @@
 /.vs/BodyLifeSkillsPlatform.iOS
 /App/bin/iPhoneSimulator/Debug
 /App/obj
+/.vs/BLS-App
+/Cloud/.vs/BodyLifeSkillsPlatform.Cloud
+/Cloud/bin
+/Cloud/Exports
+/Cloud/obj
+/Cloud/packages
