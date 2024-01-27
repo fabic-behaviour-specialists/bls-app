@@ -30,7 +30,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,13 +42,13 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
     <CodesignKey>Apple Development: Tanya  Curtis (LKQW39V94V)</CodesignKey>
     <NoStdLib>false</NoStdLib>
-    <CodesignProvision>VS: au.com.fabicbehaviourspecialists.fabicapp Development</CodesignProvision>
+    <CodesignProvision>App Distribution</CodesignProvision>
     <CodesignEntitlements>
     </CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
@@ -71,8 +71,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <NoStdLib>false</NoStdLib>
-    <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignProvision>Fabic App Distribution</CodesignProvision>
+    <CodesignKey>Apple Development: Tanya  Curtis (LKQW39V94V)</CodesignKey>
+    <CodesignProvision>VS: au.com.fabicbehaviourspecialists.fabicapp Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,7 +130,7 @@
     <MtouchFloat32>true</MtouchFloat32>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchSdkVersion>16.4</MtouchSdkVersion>
+    <MtouchSdkVersion>17.0</MtouchSdkVersion>
     <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
     <CodesignExtraArgs />
     <CodesignResourceRules />
@@ -563,7 +563,7 @@
     <PackageReference Include="Xamarin.Azure.NotificationHubs.iOS">
       <Version>3.1.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.6" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\butterfly.gif" />

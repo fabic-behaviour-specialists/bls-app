@@ -7,9 +7,9 @@
       <dSYMSourcePathExists>false</dSYMSourcePathExists>
       <NoSymbolStrip>false</NoSymbolStrip>
       <dSYMInfoPlistRelativePath>BodyLifeSkillsPlatformiOS.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
-      <SymbolFile>\Users\joshuacampbell\Library\Caches\Xamarin\mtbs\builds\BodyLifeSkillsPlatform.iOS\774fea55f267841928c6904400efe47d8a9c7c0d63590e81115d1fa91e8a53bb\obj\iPhoneSimulator\Debug\mtouch-symbols.list</SymbolFile>
+      <SymbolFile>\Users\joshuacampbell\Library\Caches\Xamarin\mtbs\builds\BodyLifeSkillsPlatform.iOS\1f36ce9a9fd3c57f8ff42eabead295b27e868c0d60272b688d002685509947d8\obj\iPhoneSimulator\Debug\mtouch-symbols.list</SymbolFile>
       <DSymName>BodyLifeSkillsPlatformiOS.app.dSYM</DSymName>
-      <SourceProjectPath>C:\dev\source\repos\Fabic\BLS-App\BodyLifeSkillsPlatform.iOS</SourceProjectPath>
+      <SourceProjectPath>C:\Projects\Fabic\BodyLifeSkillsPlatform.iOS</SourceProjectPath>
     </_PostProcessingItem>
   </ItemGroup>
 </Project>
