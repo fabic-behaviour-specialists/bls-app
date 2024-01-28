@@ -1,5 +1,5 @@
-﻿using BodyLifeSkillsPlatform.Data;
-using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Database;
+using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;

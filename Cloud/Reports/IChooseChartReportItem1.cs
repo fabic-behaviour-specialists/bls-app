@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
-using BodyLifeSkillsPlatform.Data.Helpers;
+using BLS.Cloud.Helpers;
 
 /// <summary>
 /// Summary description for BodyLifeSkillsChartItem
@@ -63,7 +63,7 @@ public class IChooseChartReportItem1 : DevExpress.XtraReports.UI.XtraReport
         base.Dispose(disposing);
     }
 
-    public void AddChartItemText(BodyLifeSkillsPlatform.Data.Models.IChooseChartItemReport item)
+    public void AddChartItemText(BLS.Cloud.Models.IChooseChartItemReport item)
     {
         XRPanel itemPanel = null; 
         XRLabel itemText = null;

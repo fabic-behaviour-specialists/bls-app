@@ -1,11 +1,11 @@
-﻿using BodyLifeSkillsPlatform.Data.Enumerations;
+﻿using BLS.Cloud.Enumerations;
 using Microsoft.Azure.Mobile.Server.Tables;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 
-namespace BodyLifeSkillsPlatform.Data.Models
+namespace BLS.Cloud.Models
 {
     public class MobileServiceContext : DbContext
     {

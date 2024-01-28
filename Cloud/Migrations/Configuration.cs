@@ -2,7 +2,7 @@ namespace Fabic.Cloud.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BodyLifeSkillsPlatform.Data.Models.MobileServiceContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BLS.Cloud.Models.MobileServiceContext>
     {
         public Configuration()
         {
@@ -10,7 +10,7 @@ namespace Fabic.Cloud.Migrations
             ContextKey = "Fabic.Cloud.Models.MobileServiceContext";
         }
 
-        protected override void Seed(BodyLifeSkillsPlatform.Data.Models.MobileServiceContext context)
+        protected override void Seed(BLS.Cloud.Models.MobileServiceContext context)
         {
             //  This method will be called after migrating to the latest version.
 

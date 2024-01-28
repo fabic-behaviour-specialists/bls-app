@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace BodyLifeSkillsPlatform.Data.Helpers
+namespace BLS.Cloud.Helpers
 {
     public static class XRControlExtensions
     {

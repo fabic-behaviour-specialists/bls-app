@@ -1,5 +1,5 @@
-﻿using BodyLifeSkillsPlatform.Data.Helpers;
-using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Helpers;
+using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server.Config;
 using Newtonsoft.Json;
 using System;
@@ -34,7 +34,7 @@ namespace Fabic.Cloud.Controllers
                 //if (ActionContext.Request.Headers.Contains("access_token"))
                 {
                     //string access_token = ActionContext.Request.Headers.GetValues("access_token").ElementAtOrDefault(0);
-                    // var token = (JwtSecurityToken)BodyLifeSkillsPlatform.Data.Controllers.AccountController.Auth0Controller._SecurityController._TokenHandler.ReadToken(access_token);
+                    // var token = (JwtSecurityToken)BLS.Cloud.Controllers.AccountController.Auth0Controller._SecurityController._TokenHandler.ReadToken(access_token);
                     // if (IsValidUser(token))
                     {
                         string id = ActionContext.Request.Headers.GetValues("id").FirstOrDefault().ToString();

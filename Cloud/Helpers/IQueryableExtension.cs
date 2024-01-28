@@ -1,8 +1,8 @@
-﻿using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Models;
 using System;
 using System.Linq;
 
-namespace BodyLifeSkillsPlatform.Data.Helpers
+namespace BLS.Cloud.Helpers
 {
     public static class IQueryableExtensions
     {

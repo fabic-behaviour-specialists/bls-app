@@ -1,5 +1,5 @@
-﻿using BodyLifeSkillsPlatform.Data.Helpers;
-using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Helpers;
+using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server;
 using System;
 using System.IdentityModel.Tokens;

@@ -1,11 +1,11 @@
-﻿using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server.Tables;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 
-namespace BodyLifeSkillsPlatform.Data.Helpers
+namespace BLS.Cloud.Helpers
 {
     public static class TableControllerExtensions
     {

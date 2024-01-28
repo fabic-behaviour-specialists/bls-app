@@ -1,4 +1,4 @@
-﻿using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server;
 using System.Linq;
 using System.Web.Http;

@@ -1,4 +1,4 @@
-namespace BodyLifeSkillsPlatform.Data.Migrations
+namespace BLS.Cloud.Migrations
 {
     using System;
     using System.Collections.Generic;

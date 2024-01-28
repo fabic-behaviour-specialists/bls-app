@@ -1,4 +1,4 @@
-﻿namespace BodyLifeSkillsPlatform.Data.Reports
+﻿namespace BLS.Cloud.Reports
 {
     partial class IChooseChartReport
     {

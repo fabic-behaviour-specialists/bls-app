@@ -1,5 +1,5 @@
-﻿using BodyLifeSkillsPlatform.Data.Helpers;
-using BodyLifeSkillsPlatform.Data.Models;
+﻿using BLS.Cloud.Helpers;
+using BLS.Cloud.Models;
 using Microsoft.Azure.Mobile.Server.Config;
 using Newtonsoft.Json;
 using System;
@@ -44,7 +44,7 @@ namespace Fabic.Cloud.Controllers
                         if (itemsRaw.Length > 0)
                             try
                             {
-                                chart = JsonConvert.DeserializeObject<Data.Models.IChooseChartReport>(itemsRaw);
+                                chart = JsonConvert.DeserializeObject<IChooseChartReport>(itemsRaw);
                             }
                             catch (Exception ex)
                             {

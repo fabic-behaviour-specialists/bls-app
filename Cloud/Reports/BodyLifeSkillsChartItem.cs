@@ -1,4 +1,4 @@
-﻿using BodyLifeSkillsPlatform.Data.Helpers;
+﻿using BLS.Cloud.Helpers;
 using DevExpress.XtraReports.UI;
 using System.Drawing;
 
@@ -128,7 +128,7 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
         base.Dispose(disposing);
     }
 
-    public void AddChartItemText(BodyLifeSkillsPlatform.Data.Models.BehaviourScaleItem item)
+    public void AddChartItemText(BLS.Cloud.Models.BehaviourScaleItem item)
     {
         count++;
         XRPanel itemPanel = new XRPanel();

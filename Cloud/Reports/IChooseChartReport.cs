@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 
-namespace BodyLifeSkillsPlatform.Data.Reports
+namespace BLS.Cloud.Reports
 {
     public partial class IChooseChartReport : DevExpress.XtraReports.UI.XtraReport
     {
