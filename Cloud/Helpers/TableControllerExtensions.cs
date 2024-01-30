@@ -1,4 +1,5 @@
 ﻿using BLS.Cloud.Models;
+using Fabic.Cloud.Controllers;
 using Microsoft.Azure.Mobile.Server.Tables;
 using System.IdentityModel.Tokens;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace BLS.Cloud.Helpers
             if (controller.Request.Headers.Contains("access_token"))
             {
                 string access_token = controller.Request.Headers.GetValues("access_token").ElementAtOrDefault(0);
-                var token = (JwtSecurityToken)Cloud.Controllers.AccountController.Auth0Controller._SecurityController._TokenHandler.ReadToken(access_token);
+                var token = (JwtSecurityToken)AccountController.Auth0Controller._SecurityController._TokenHandler.ReadToken(access_token);
                 if (IsValidUser(token))
                 {
                     return true;
@@ -52,7 +53,7 @@ namespace BLS.Cloud.Helpers
             if (token == null)
                 return false;
             var audience = token.Audiences.FirstOrDefault();
-            if (!audience.Equals(Fabic.Cloud.Controllers.AccountController.Auth0Controller._SecurityController._ClientID))
+            if (!audience.Equals(AccountController.Auth0Controller._SecurityController._ClientID))
                 return false;
             if (!token.Issuer.Equals(Fabic.Cloud.Controllers.AccountController.Auth0Controller._SecurityController._Issuer) && !token.Issuer.Equals($"https://{Fabic.Cloud.Controllers.AccountController.Auth0Controller._SecurityController._Domain}/"))
                 return false;

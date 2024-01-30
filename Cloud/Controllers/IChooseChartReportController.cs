@@ -40,7 +40,7 @@ namespace Fabic.Cloud.Controllers
                     {
                         string id = ActionContext.Request.Headers.GetValues("id").FirstOrDefault().ToString();
                         string itemsRaw = ActionContext.Request.Content.ReadAsStringAsync().Result;
-                        Data.Models.IChooseChartReport chart = null;
+                        IChooseChartReport chart = null;
                         if (itemsRaw.Length > 0)
                             try
                             {
@@ -56,7 +56,7 @@ namespace Fabic.Cloud.Controllers
                         if (chart != null)
                         {
                             items = chart.Items;
-                            Data.Reports.IChooseChartReport report = new Data.Reports.IChooseChartReport();
+                            BLS.Cloud.Reports.IChooseChartReport report = new BLS.Cloud.Reports.IChooseChartReport();
                             report.lblReportTitle.Text = chart.Name;
 
                             List<IChooseChartItemReport> option1Behaviour = items.Where(x => x.ChartOption == 0 && x.ChartType == 0).ToList();
