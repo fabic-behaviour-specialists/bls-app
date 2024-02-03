@@ -25,7 +25,7 @@ namespace Fabic.Core.Controllers
         //private static MobileServiceSQLiteStore _Store;
         //private static MobileServiceUser _User;
         //public static MobileServiceClient _Client;
-        public const string MOBILE_APP_URL = "https://fabicapp.fierydevelopment.com:8080/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
+        public const string MOBILE_APP_URL = "http://172.23.33.130/BodyLifeSkillsPlatform.Cloud/"; //"https://fabicapp.fierydevelopment.com:8080/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
         public async static Task<bool> InitialiseDatabase(bool withSync = true)
         {
             try
@@ -1408,7 +1408,7 @@ namespace Fabic.Core.Controllers
                 syncData.ScaleItems = _DBConnection.Table<BehaviourScaleItem>().Where(x => scaleIds.Contains(x.BehaviourScale)).ToList();
                 
 
-                var client = new RestClient(MOBILE_APP_URL + "/api/management");
+                var client = new RestClient(MOBILE_APP_URL + "management/syncuserdata");
                 var request = new RestRequest();
                 request.AddJsonBody(syncData);
                 request.AddHeader("access_token", SecurityController.AccessToken);
