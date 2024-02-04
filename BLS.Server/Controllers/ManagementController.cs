@@ -17,19 +17,26 @@ namespace BLS.Server.Controllers
             _databaseService = databaseService;
         }
 
-        //[HttpGet()]
-        //[Route("id/{guid}")]
-        //public Task<Book?> Get(string guid)
-        //{
-        //    return _bookService.GetBookById(guid);
-        //}
+        [HttpPost]
+        [Route("management/syncuserdata")]
+        public void SyncUserData(string json)
+        {
 
-        //[HttpPost()]
-        //[Route("latest-books")]
-        //public async Task<IEnumerable<Book>> GetLatestBooks(int pageSize = 15, int offset = 0, string? language = null)
-        //{
-        //    var books = await _bookService.GetBookList(language);
-        //    return books.OrderByDescending(x => x.ReleaseDate).LimitToPage(pageSize, offset);
-        //}
-    }
+        }
+
+            //[HttpGet()]
+            //[Route("id/{guid}")]
+            //public Task<Book?> Get(string guid)
+            //{
+            //    return _bookService.GetBookById(guid);
+            //}
+
+            //[HttpPost()]
+            //[Route("latest-books")]
+            //public async Task<IEnumerable<Book>> GetLatestBooks(int pageSize = 15, int offset = 0, string? language = null)
+            //{
+            //    var books = await _bookService.GetBookList(language);
+            //    return books.OrderByDescending(x => x.ReleaseDate).LimitToPage(pageSize, offset);
+            //}
+        }
 }
