@@ -6,4 +6,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Reports\BodyLifeSkillsChart.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\BodyLifeSkillsChartItem.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReportItem1.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReportItem2.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -9,11 +9,105 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\bls-chart-body-examples.png" />
+    <None Remove="Resources\bls-chart-body-explanation.png" />
+    <None Remove="Resources\bls-chart-colours.png" />
+    <None Remove="Resources\bls-chart-life-examples.png" />
+    <None Remove="Resources\bls-chart-life-explanation.png" />
+    <None Remove="Resources\fabic-footer-export.png" />
+    <None Remove="Resources\Faces1.png" />
+    <None Remove="Resources\Faces2.png" />
+    <None Remove="Resources\Faces3.png" />
+    <None Remove="Resources\Faces4.png" />
+    <None Remove="Resources\Faces5.png" />
+    <None Remove="Resources\I-choose-chart-title.png" />
+    <None Remove="Resources\i-choose-chart.png" />
+    <None Remove="Resources\I_Choose_Chart_CompletedChart.png" />
+    <None Remove="Resources\I_Choose_Chart_Option1_Behaviours.png" />
+    <None Remove="Resources\I_Choose_Chart_Option1_Outcomes.png" />
+    <None Remove="Resources\I_Choose_Chart_Option2_Behaviours.png" />
+    <None Remove="Resources\I_Choose_Chart_Option2_Outcomes.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\bls-chart-body-examples.png" />
+    <Content Include="Resources\bls-chart-body-explanation.png" />
+    <Content Include="Resources\bls-chart-colours.png" />
+    <Content Include="Resources\bls-chart-life-examples.png" />
+    <Content Include="Resources\bls-chart-life-explanation.png" />
+    <Content Include="Resources\fabic-footer-export.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Faces5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\I-choose-chart-title.png" />
+    <Content Include="Resources\i-choose-chart.png" />
+    <Content Include="Resources\I_Choose_Chart_CompletedChart.png" />
+    <Content Include="Resources\I_Choose_Chart_Option1_Behaviours.png" />
+    <Content Include="Resources\I_Choose_Chart_Option1_Outcomes.png" />
+    <Content Include="Resources\I_Choose_Chart_Option2_Behaviours.png" />
+    <Content Include="Resources\I_Choose_Chart_Option2_Outcomes.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v22.1">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\Standard\DevExpress.Data.v22.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v22.1.Core">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\Standard\DevExpress.Printing.v22.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v22.1">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\NetCore\DevExpress.XtraPrinting.v22.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v22.1">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\Standard\DevExpress.XtraReports.v22.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v22.1.Extensions">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\NetCore\DevExpress.XtraReports.v22.1.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v22.1.Service">
+      <HintPath>..\..\..\..\Program Files\DevExpress 22.1\Components\Bin\Standard\DevExpress.XtraReports.v22.1.Service.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Reports\BodyLifeSkillsChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Reports\BodyLifeSkillsChartItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReportItem1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Reports\IChooseChartReportItem2.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
