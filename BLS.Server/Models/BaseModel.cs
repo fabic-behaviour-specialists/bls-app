@@ -1,9 +1,12 @@
-﻿using Microsoft.Azure.Mobile.Server;
-
-namespace BLS.Cloud.Models
+﻿namespace BLS.Cloud.Models
 {
-    public abstract class BaseModel : EntityData
+    public abstract class BaseModel 
     {
+        /// <summary>
+        /// The ID
+        /// </summary>
+        public string Id { get; set; }
+
         /// <summary>
         /// The ID of the associated user
         /// </summary>
@@ -13,5 +16,8 @@ namespace BLS.Cloud.Models
         /// Whether or not this particular Behaviour Scale has been migrated to the new system yet
         /// </summary>
         public bool Migrated { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

@@ -24,19 +24,19 @@ namespace BLS.Server.Controllers
 
         }
 
-            //[HttpGet()]
-            //[Route("id/{guid}")]
-            //public Task<Book?> Get(string guid)
-            //{
-            //    return _bookService.GetBookById(guid);
-            //}
+        //[HttpGet()]
+        //[Route("id/{guid}")]
+        //public Task<Book?> Get(string guid)
+        //{
+        //    return _bookService.GetBookById(guid);
+        //}
 
-            //[HttpPost()]
-            //[Route("latest-books")]
-            //public async Task<IEnumerable<Book>> GetLatestBooks(int pageSize = 15, int offset = 0, string? language = null)
-            //{
-            //    var books = await _bookService.GetBookList(language);
-            //    return books.OrderByDescending(x => x.ReleaseDate).LimitToPage(pageSize, offset);
-            //}
-        }
+        //[HttpPost()]
+        //[Route("latest-books")]
+        //public async Task<IEnumerable<Book>> GetLatestBooks(int pageSize = 15, int offset = 0, string? language = null)
+        //{
+        //    var books = await _bookService.GetBookList(language);
+        //    return books.OrderByDescending(x => x.ReleaseDate).LimitToPage(pageSize, offset);
+        //}
+    }
 }
