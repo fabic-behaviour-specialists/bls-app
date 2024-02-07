@@ -3,6 +3,7 @@ using BLS.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
+using System.Text;
 
 namespace BLS.Server.Controllers
 {
@@ -29,10 +30,22 @@ namespace BLS.Server.Controllers
             {
                 string id = HttpContext.Request.Headers["id"].ToString();
                 string rawJSON = string.Empty;
+                char[] result;
+                StringBuilder builder = new StringBuilder();
+
                 using (var inputStream = new StreamReader(HttpContext.Request.Body))
                 {
-                    rawJSON = inputStream.ReadToEnd();
+                    result = new char[inputStream.BaseStream.Length];
+                    await inputStream.ReadAsync(result, 0, (int)inputStream.BaseStream.Length);
                 }
+                foreach (char c in result)
+                {
+                    if (char.IsLetterOrDigit(c) || char.IsWhiteSpace(c))
+                    {
+                        builder.Append(c);
+                    }
+                }
+                rawJSON = builder.ToString();
 
                 BehaviourScaleReport? scale = null;
                 if (rawJSON.Length > 0)
@@ -67,11 +80,11 @@ namespace BLS.Server.Controllers
                     List<BehaviourScaleItem> lifeItems1 = items.Where(x => x.BehaviourScaleLevel == 1 && x.BehaviourScaleType == 1).ToList();
                     List<BehaviourScaleItem> bodyItems1 = items.Where(x => x.BehaviourScaleLevel == 1 && x.BehaviourScaleType == 0).ToList();
 
-                    BodyLifeSkillsChartItem chartItem5 = new BodyLifeSkillsChartItem(5);
-                    BodyLifeSkillsChartItem chartItem4 = new BodyLifeSkillsChartItem(4);
-                    BodyLifeSkillsChartItem chartItem3 = new BodyLifeSkillsChartItem(3);
-                    BodyLifeSkillsChartItem chartItem2 = new BodyLifeSkillsChartItem(2);
-                    BodyLifeSkillsChartItem chartItem1 = new BodyLifeSkillsChartItem(1);
+                    BodyLifeSkillsChartItem chartItem5 = new BodyLifeSkillsChartItem(_hostingEnvironment, 5);
+                    BodyLifeSkillsChartItem chartItem4 = new BodyLifeSkillsChartItem(_hostingEnvironment, 4);
+                    BodyLifeSkillsChartItem chartItem3 = new BodyLifeSkillsChartItem(_hostingEnvironment, 3);
+                    BodyLifeSkillsChartItem chartItem2 = new BodyLifeSkillsChartItem(_hostingEnvironment, 2);
+                    BodyLifeSkillsChartItem chartItem1 = new BodyLifeSkillsChartItem(_hostingEnvironment, 1);
 
                     foreach (BehaviourScaleItem item in lifeItems5)
                         // if (!doNotIncludeList.Contains(item.Id))

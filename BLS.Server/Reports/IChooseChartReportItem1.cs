@@ -88,10 +88,10 @@ public class IChooseChartReportItem1 : DevExpress.XtraReports.UI.XtraReport
         itemPanel.Controls.Add(itemText);
         itemPanel.Visible = true;
 
-        System.Windows.Forms.Label label = new System.Windows.Forms.Label();
-        label.Size = new Size(Convert.ToInt32(itemText.WidthF), Convert.ToInt32(itemText.HeightF));
-        Graphics graphics = label.CreateGraphics();
-        SizeF size = graphics.MeasureString(item.ItemText, itemText.Font);
+        //System.Windows.Forms.Label label = new System.Windows.Forms.Label();
+        //label.Size = new Size(Convert.ToInt32(itemText.WidthF), Convert.ToInt32(itemText.HeightF));
+        //Graphics graphics = label.CreateGraphics();
+        SizeF size = new SizeF(40, 40); // graphics.MeasureString(item.ItemText, itemText.Font);
         if (size.Height > 35)
         {
             itemText.HeightF = size.Height + 4;

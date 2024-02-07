@@ -10,16 +10,17 @@ namespace BLS.Server.Services
     public class DatabaseService : IDatabaseService
     {
         private readonly ILogger<DatabaseService> _logger;
-        private readonly IMemoryCache _cache;
 
         private SqlConnection _connection;
 
-        public DatabaseService(ILogger<DatabaseService> logger, IMemoryCache memoryCache)
+        public DatabaseService(ILogger<DatabaseService> logger, IConfiguration configuration)
         {
             _logger = logger;
-            _cache = memoryCache;
-            _connection = new("");
+
+            string? connection = configuration.GetConnectionString("Server") ?? throw new ArgumentNullException("Missing the server connection string");
+            _connection = new(connection); 
             _connection.Open();
+            
         }
 
         public async Task<IReadOnlyList<BehaviourScaleItem>> GetUserBehaviourScaleItemsAsync(string userId)

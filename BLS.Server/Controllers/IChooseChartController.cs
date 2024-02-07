@@ -82,7 +82,7 @@ namespace BLS.Server.Controllers
 
                     string filename = @"\" + DateTime.Now.ToFileTime().ToString() + ".pdf";
                     string filepath = Path.Combine(_hostingEnvironment.WebRootPath, "~/Exports");
-                    chart.ExportToPdf(filepath + filename);
+                    report.ExportToPdf(filepath + filename);
 
                     FileStream fileStream = new FileStream(filepath + filename, FileMode.Open);
                     BinaryReader reader = new BinaryReader(fileStream);

@@ -18,6 +18,8 @@ builder.Services.AddSwaggerGen(c => c.ResolveConflictingActions(apiDescriptions 
 
 var app = builder.Build();
 
+app.MapGet("/", () => "Hello Welcome to the BLS Server!");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

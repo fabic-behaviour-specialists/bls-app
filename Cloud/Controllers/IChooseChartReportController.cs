@@ -4,7 +4,6 @@ using Microsoft.Azure.Mobile.Server.Config;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IdentityModel.Tokens;
 using System.IO;
 using System.Linq;
