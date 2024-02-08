@@ -65,11 +65,12 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
         switch (behaviourScaleLevel)
         {
             case 5:
+                var path = environment.ContentRootPath.Replace("\\", "/") + "/Resources/Faces5.png";
                 lblBehaviourLevel.Text = "Level 5 - Code Red";
                 lblIntensity.Text = "Meltdown body";
                 lblLevelDescription.Text = "Perceived 0-20% equipped to manage life";
                 lblAnxiety.Visible = false;
-                picLevel.Image = Image.FromFile(Path.Combine(environment.WebRootPath, "~/Resources/Faces5.png"));
+                picLevel.Image = Image.FromFile(path);
                 panelInfo.BorderColor = Color.FromArgb(207, 29, 36);
                 panelInfo.BackColor = Color.FromArgb(245, 150, 164);
                 break;
@@ -79,7 +80,7 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
                 lblLevelDescription.Text = "Perceived 20-40% equipped to manage life";
                 lblAnxiety.Text = "a lot";
                 lblAnxiety.Visible = true;
-                picLevel.Image = Image.FromFile(Path.Combine(environment.WebRootPath, "~/Resources/Faces4.png"));
+                picLevel.Image = Image.FromFile(environment.ContentRootPath.Replace("\\", "/") + "/Resources/Faces4.png");
                 panelInfo.BorderColor = Color.FromArgb(237, 106, 35);
                 panelInfo.BackColor = Color.FromArgb(247, 193, 154);
                 break;
@@ -89,7 +90,7 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
                 lblLevelDescription.Text = "Perceived 40-60% equipped to manage life";
                 lblAnxiety.Text = "more";
                 lblAnxiety.Visible = true;
-                picLevel.Image = Image.FromFile(Path.Combine(environment.WebRootPath, "~/Resources/Faces3.png"));
+                picLevel.Image = Image.FromFile(environment.ContentRootPath.Replace("\\", "/") + "/Resources/Faces3.png");
                 panelInfo.BorderColor = Color.FromArgb(253, 212, 5);
                 panelInfo.BackColor = Color.FromArgb(250, 236, 159);
                 break;
@@ -99,7 +100,7 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
                 lblLevelDescription.Text = "Perceived 60-80% equipped to manage life";
                 lblAnxiety.Text = "a little bit";
                 lblAnxiety.Visible = true;
-                picLevel.Image = Image.FromFile(Path.Combine(environment.WebRootPath, "~/Resources/Faces2.png"));
+                picLevel.Image = Image.FromFile(environment.ContentRootPath.Replace("\\", "/") + "/Resources/Faces2.png");
                 panelInfo.BorderColor = Color.FromArgb(0, 166, 81);
                 panelInfo.BackColor = Color.FromArgb(147, 209, 172);
                 break;
@@ -108,7 +109,7 @@ public class BodyLifeSkillsChartItem : DevExpress.XtraReports.UI.XtraReport
                 lblIntensity.Text = "Calm and wanted body";
                 lblLevelDescription.Text = "Perceived 80-100% equipped to manage life";
                 lblAnxiety.Visible = false;
-                picLevel.Image = Image.FromFile(Path.Combine(environment.WebRootPath, "~/Resources/Faces1.png"));
+                picLevel.Image = Image.FromFile(environment.ContentRootPath.Replace("\\", "/") + "/Resources/Faces1.png");
                 panelInfo.BorderColor = Color.FromArgb(42, 75, 160);
                 panelInfo.BackColor = Color.FromArgb(138, 172, 218);
                 break;

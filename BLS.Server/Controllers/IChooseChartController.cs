@@ -3,6 +3,7 @@ using BLS.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
+using System.Text;
 
 namespace BLS.Server.Controllers
 {
@@ -30,9 +31,10 @@ namespace BLS.Server.Controllers
             {
                 string id = HttpContext.Request.Headers["id"].ToString();
                 string rawJSON = string.Empty;
+
                 using (var inputStream = new StreamReader(HttpContext.Request.Body))
                 {
-                    rawJSON = inputStream.ReadToEnd();
+                    rawJSON = await inputStream.ReadToEndAsync();
                 }
 
                 IChooseChartReport? chart = null;
@@ -80,17 +82,9 @@ namespace BLS.Server.Controllers
                     report.AddChartItem1(reportItem1);
                     report.AddChartItem2(reportItem2);
 
-                    string filename = @"\" + DateTime.Now.ToFileTime().ToString() + ".pdf";
-                    string filepath = Path.Combine(_hostingEnvironment.WebRootPath, "~/Exports");
-                    report.ExportToPdf(filepath + filename);
-
-                    FileStream fileStream = new FileStream(filepath + filename, FileMode.Open);
-                    BinaryReader reader = new BinaryReader(fileStream);
-                    Byte[] array = reader.ReadBytes(Convert.ToInt32(fileStream.Length));
-                    var stream = new MemoryStream(array);
-                    fileStream.Close();
-
-                    return array;
+                    using MemoryStream ms = new();
+                    await report.ExportToPdfAsync(ms);
+                    return ms.ToArray();
 
                     // processing the stream.
 

@@ -30,22 +30,11 @@ namespace BLS.Server.Controllers
             {
                 string id = HttpContext.Request.Headers["id"].ToString();
                 string rawJSON = string.Empty;
-                char[] result;
-                StringBuilder builder = new StringBuilder();
 
                 using (var inputStream = new StreamReader(HttpContext.Request.Body))
                 {
-                    result = new char[inputStream.BaseStream.Length];
-                    await inputStream.ReadAsync(result, 0, (int)inputStream.BaseStream.Length);
+                    rawJSON = await inputStream.ReadToEndAsync();
                 }
-                foreach (char c in result)
-                {
-                    if (char.IsLetterOrDigit(c) || char.IsWhiteSpace(c))
-                    {
-                        builder.Append(c);
-                    }
-                }
-                rawJSON = builder.ToString();
 
                 BehaviourScaleReport? scale = null;
                 if (rawJSON.Length > 0)
@@ -128,34 +117,9 @@ namespace BLS.Server.Controllers
                     height += chartItem2.Height;
                     chart.AddBodyLifeSkillsChartItem(chartItem1, height);
 
-                    string filename = @"\" + DateTime.Now.ToFileTime().ToString() + ".pdf";
-                    string filepath = Path.Combine(_hostingEnvironment.WebRootPath, "~/Exports");
-                    chart.ExportToPdf(filepath + filename);
-
-                    FileStream fileStream = new FileStream(filepath + filename, FileMode.Open);
-                    BinaryReader reader = new BinaryReader(fileStream);
-                    Byte[] array = reader.ReadBytes(Convert.ToInt32(fileStream.Length));
-                    var stream = new MemoryStream(array);
-                    fileStream.Close();
-
-                    return array;
-
-                    // processing the stream.
-
-                    //var result = new HttpResponseMessage(HttpStatusCode.OK)
-                    //{
-                    //    Content = new ByteArrayContent(stream.ToArray())
-                    //};
-
-                    //Exception exp = new Exception(result.Content.ToString());
-
-                    //result.Content.Headers.ContentDisposition =
-                    //    new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
-                    //    {
-                    //        FileName = "export.pdf"
-                    //    };
-                    //result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                    //return result;
+                    using MemoryStream ms = new();
+                    await chart.ExportToPdfAsync(ms);
+                    return ms.ToArray();
                 }
             }
             catch (Exception ex)
