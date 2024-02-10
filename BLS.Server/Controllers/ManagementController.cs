@@ -20,11 +20,16 @@ namespace BLS.Server.Controllers
         }
 
         [HttpPost]
-        [Route("management/syncuserdata")]
-        public async Task<SyncData> SyncUserData(string json)
+        [Route("syncuserdata")]
+        public async Task<SyncData> SyncUserData()
         {
-            var rawdata = JsonConvert.DeserializeObject(json) ?? throw new BadHttpRequestException("Invalid Body");
-            SyncData data = (SyncData)rawdata;
+            var json = string.Empty;
+            using (var inputStream = new StreamReader(HttpContext.Request.Body))
+            {
+                json = await inputStream.ReadToEndAsync();
+            }
+
+            SyncData data = JsonConvert.DeserializeObject<SyncData>(json) ?? throw new BadHttpRequestException("Invalid Body");
 
             if (string.IsNullOrWhiteSpace(data.UserID))
             {
@@ -53,12 +58,14 @@ namespace BLS.Server.Controllers
             var ichooseCharts = await _databaseService.GetUserIChooseChartsAsync(data.UserID);
             var ichooseChartItems = await _databaseService.GetUserIChooseChartItemsAsync(data.UserID);
 
-            SyncData serverData = new SyncData();
-            serverData.UserID = data.UserID;
-            serverData.Scales = behaviourScales.ToList();
-            serverData.ScaleItems = behaviourScaleItems.ToList();
-            serverData.Charts = ichooseCharts.ToList();
-            serverData.ChartItems = ichooseChartItems.ToList();
+            SyncData serverData = new()
+            {
+                UserID = data.UserID,
+                Scales = [.. behaviourScales],
+                ScaleItems = [.. behaviourScaleItems],
+                Charts = [.. ichooseCharts],
+                ChartItems = [.. ichooseChartItems]
+            };
 
             return serverData;
 

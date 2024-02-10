@@ -30,6 +30,7 @@ namespace BLS.Server.Services
 
         public async Task<IReadOnlyList<BehaviourScale>> GetUserBehaviourScalesAsync(string userId)
         {
+            var result = await _connection.QueryAsync("SELECT * FROM BehaviourScales WHERE UserID = @UserId order by UpdatedAt desc", new { UserId = userId });
             return (await _connection.QueryAsync<BehaviourScale>("SELECT * FROM BehaviourScales WHERE UserID = @UserId order by UpdatedAt desc", new { UserId = userId })).ToList();
         }
 
