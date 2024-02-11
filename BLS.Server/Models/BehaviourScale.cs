@@ -47,7 +47,7 @@ namespace BLS.Cloud.Models
             UserID = string.Empty;
             FabicExample = false;
             CreatedAt = DateTime.Now;
-            Items = new List<BehaviourScaleItem>();
+            Items = new();
         }
     }
 }
