@@ -1,11 +1,13 @@
 using BLS.Cloud.Models;
 using BLS.Server.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace BLS.Server.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class ManagementController : ControllerBase
     {
