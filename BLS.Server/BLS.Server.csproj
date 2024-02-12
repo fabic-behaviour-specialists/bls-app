@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="publish\**" />
+    <Content Remove="publish\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <None Remove="publish\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\bls-chart-body-examples.png" />
     <None Remove="Resources\bls-chart-body-explanation.png" />
     <None Remove="Resources\bls-chart-colours.png" />
