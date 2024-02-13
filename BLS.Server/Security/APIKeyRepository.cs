@@ -10,8 +10,8 @@
         public APIKeyRepository(IConfiguration configuration) {
             _configuration = configuration;
 
-            var apikey = configuration.GetValue<string>("APIKey");
-            _cache.Add(new APIKey(apikey, ""));
+            //var apikey = configuration.GetValue<string>("APIKey");
+            _cache.Add(new APIKey("Key1", "Key1"));
         }
 
         public Task<IApiKey> GetApiKeyAsync(string key)

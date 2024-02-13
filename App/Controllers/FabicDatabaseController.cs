@@ -25,7 +25,7 @@ namespace Fabic.Core.Controllers
         //private static MobileServiceSQLiteStore _Store;
         //private static MobileServiceUser _User;
         //public static MobileServiceClient _Client;
-        public const string MOBILE_APP_URL = "http://172.23.33.130/BodyLifeSkillsPlatform.Cloud/"; //"https://fabicapp.fierydevelopment.com:8080/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
+        public const string MOBILE_APP_URL = "http://192.168.1.166:5277/api/"; //"http://172.23.33.130/BodyLifeSkillsPlatform.Cloud/"; //"https://fabicapp.fierydevelopment.com:8080/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
         public async static Task<bool> InitialiseDatabase(bool withSync = true)
         {
             try
@@ -1411,9 +1411,7 @@ namespace Fabic.Core.Controllers
                 var client = new RestClient(MOBILE_APP_URL + "management/syncuserdata");
                 var request = new RestRequest();
                 request.AddJsonBody(syncData);
-                request.AddHeader("access_token", SecurityController.AccessToken);
-                request.AddHeader("userId", SecurityController.CurrentUser.UserID);
-                request.AddHeader("ZUMO-API-VERSION", "2.0.0");
+                request.AddHeader("X-API-KEY", "Key1");
                 var response = await client.PostAsync(request);
 
                 var r = response.Content.ToString().Replace("\\\"", "\"");
