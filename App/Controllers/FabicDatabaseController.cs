@@ -1398,9 +1398,11 @@ namespace Fabic.Core.Controllers
         {
             try
             {
-                SyncData syncData = new SyncData();
-                syncData.UserID = SecurityController.CurrentUser.UserID;
-                syncData.Charts = _DBConnection.Table<IChooseChart>().Where(x => !x.FabicExample).ToList();
+                SyncData syncData = new SyncData
+                {
+                    UserID = SecurityController.CurrentUser.UserID,
+                    Charts = _DBConnection.Table<IChooseChart>().Where(x => !x.FabicExample).ToList()
+                };
                 var chartIds = syncData.Charts.Select(y => y.Id).ToList();
                 syncData.ChartItems = _DBConnection.Table<IChooseChartItem>().Where(x => chartIds.Contains(x.IChooseChart)).ToList();
                 syncData.Scales = _DBConnection.Table<BehaviourScale>().Where(x => !x.FabicExample).ToList();
@@ -1418,43 +1420,47 @@ namespace Fabic.Core.Controllers
 
                 if (!string.IsNullOrEmpty(r) && r.Length > 2)
                 { 
-                    r = r.Substring(1, r.Length - 2);
+                    //r = r.Substring(1, r.Length - 2);
 
                     dynamic json = JsonConvert.DeserializeObject(r);
 
                     if (json != null)
                     {
-                        if (json.Charts != null)
+                        if (json.charts != null)
                         {
-                            foreach (var chartJson in json.Charts)
+                            foreach (var chartJson in json.charts)
                             {
-                                IChooseChart chart = new IChooseChart();
-                                chart.Id = chartJson.Id;
-                                chart.Archived = chartJson.Archived;
-                                chart.CreatedAt = chartJson.CreatedAt;
-                                chart.Description1 = chartJson.Description1;
-                                chart.Description2 = chartJson.Description2;
-                                chart.FabicExample = chartJson.FabicExample;
-                                chart.Name = chartJson.Name;
-                                chart.UserID = chartJson.UserID;
-                                chart.UpdatedAt = chartJson.UpdatedAt;
+                                IChooseChart chart = new IChooseChart
+                                {
+                                    Id = chartJson.id,
+                                    Archived = chartJson.archived,
+                                    CreatedAt = chartJson.createdAt,
+                                    Description1 = chartJson.description1,
+                                    Description2 = chartJson.description2,
+                                    FabicExample = chartJson.fabicExample,
+                                    Name = chartJson.name,
+                                    UserID = chartJson.userID,
+                                    UpdatedAt = chartJson.updatedAt
+                                };
                                 SaveOrUpdateIChooseChart(chart);
                             }
                         }
-                        if (json.ChartItems != null)
+                        if (json.chartItems != null)
                         {
-                            foreach (var chartJson in json.ChartItems)
+                            foreach (var chartJson in json.chartItems)
                             {
-                                IChooseChartItem chart = new IChooseChartItem();
-                                chart.Id = chartJson.Id;
-                                chart.Archived = chartJson.Archived;
-                                chart.CreatedAt = chartJson.CreatedAt;
-                                chart.UserID = chartJson.UserID;
-                                chart.UpdatedAt = chartJson.UpdatedAt;
-                                chart.ChartOption = chartJson.ChartOption;
-                                chart.ChartType = chartJson.ChartType;
-                                chart.IChooseChart = chartJson.IChooseChart;
-                                chart.ItemText = chartJson.ItemText;
+                                IChooseChartItem chart = new IChooseChartItem
+                                {
+                                    Id = chartJson.id,
+                                    Archived = chartJson.archived,
+                                    CreatedAt = chartJson.createdAt,
+                                    UserID = chartJson.userID,
+                                    UpdatedAt = chartJson.updatedAt,
+                                    ChartOption = chartJson.chartOption,
+                                    ChartType = chartJson.chartType,
+                                    IChooseChart = chartJson.iChooseChart,
+                                    ItemText = chartJson.itemText
+                                };
                                 SaveOrUpdateIChooseChartItem(chart);
                             }
                         }
@@ -1462,14 +1468,16 @@ namespace Fabic.Core.Controllers
                         {
                             foreach (var chartJson in json.Scales)
                             {
-                                BehaviourScale chart = new BehaviourScale();
-                                chart.Id = chartJson.Id;
-                                chart.Archived = chartJson.Archived;
-                                chart.CreatedAt = chartJson.CreatedAt;
-                                chart.FabicExample = chartJson.FabicExample;
-                                chart.Name = chartJson.Name;
-                                chart.UserID = chartJson.UserID;
-                                chart.UpdatedAt = chartJson.UpdatedAt;
+                                BehaviourScale chart = new BehaviourScale
+                                {
+                                    Id = chartJson.id,
+                                    Archived = chartJson.archived,
+                                    CreatedAt = chartJson.createdAt,
+                                    FabicExample = chartJson.fabicExample,
+                                    Name = chartJson.name,
+                                    UserID = chartJson.userID,
+                                    UpdatedAt = chartJson.updatedAt
+                                };
                                 SaveOrUpdateBehaviourScale(chart);
                             }
                         }
@@ -1477,16 +1485,18 @@ namespace Fabic.Core.Controllers
                         {
                             foreach (var chartJson in json.ScaleItems)
                             {
-                                BehaviourScaleItem chart = new BehaviourScaleItem();
-                                chart.Id = chartJson.Id;
-                                chart.Archived = chartJson.Archived;
-                                chart.CreatedAt = chartJson.CreatedAt;
-                                chart.UserID = chartJson.UserID;
-                                chart.UpdatedAt = chartJson.UpdatedAt;
-                                chart.BehaviourScale = chartJson.BehaviourScale;
-                                chart.BehaviourScaleLevel = chartJson.BehaviourScaleLevel;
-                                chart.BehaviourScaleType = chartJson.BehaviourScaleType;
-                                chart.Name = chartJson.Name;
+                                BehaviourScaleItem chart = new BehaviourScaleItem
+                                {
+                                    Id = chartJson.id,
+                                    Archived = chartJson.archived,
+                                    CreatedAt = chartJson.createdAt,
+                                    UserID = chartJson.userID,
+                                    UpdatedAt = chartJson.updatedAt,
+                                    BehaviourScale = chartJson.behaviourScale,
+                                    BehaviourScaleLevel = chartJson.behaviourScaleLevel,
+                                    BehaviourScaleType = chartJson.behaviourScaleType,
+                                    Name = chartJson.Name
+                                };
                                 SaveOrUpdateBehaviourScaleItem(chart);
                             }
                         }
@@ -1933,7 +1943,7 @@ namespace Fabic.Core.Controllers
             {
                 List<IChooseChartItem> items = _DBConnection.Table<IChooseChartItem>().Where(x => x.IChooseChart == chart.Id && x.Archived == false).ToList();
 
-                if (items != null)
+                if (items != null && chart.FabicExample)
                 {
                     foreach (IChooseChartItem chartItem in items)
                     {
