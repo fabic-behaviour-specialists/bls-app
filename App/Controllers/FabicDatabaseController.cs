@@ -25,7 +25,7 @@ namespace Fabic.Core.Controllers
         //private static MobileServiceSQLiteStore _Store;
         //private static MobileServiceUser _User;
         //public static MobileServiceClient _Client;
-        public const string MOBILE_APP_URL = "http://192.168.1.166:5277/api/"; //"http://172.23.33.130/BodyLifeSkillsPlatform.Cloud/"; //"https://fabicapp.fierydevelopment.com:8080/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
+        public const string MOBILE_APP_URL = "https://fabicapp.fierydevelopment.com:8888/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
         public async static Task<bool> InitialiseDatabase(bool withSync = true)
         {
             try
