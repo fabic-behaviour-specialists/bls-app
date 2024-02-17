@@ -25,7 +25,7 @@ namespace Fabic.Core.Controllers
         //private static MobileServiceSQLiteStore _Store;
         //private static MobileServiceUser _User;
         //public static MobileServiceClient _Client;
-        public const string MOBILE_APP_URL = "https://fabicapp.fierydevelopment.com:8888/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
+        public const string MOBILE_APP_URL = "https://fabicapp.fierydevelopment.com:8888/api/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
         public async static Task<bool> InitialiseDatabase(bool withSync = true)
         {
             try
@@ -1413,7 +1413,7 @@ namespace Fabic.Core.Controllers
                 var client = new RestClient(MOBILE_APP_URL + "management/syncuserdata");
                 var request = new RestRequest();
                 request.AddJsonBody(syncData);
-                request.AddHeader("X-API-KEY", "Key1");
+                request.AddHeader("X-API-KEY", "668E745B-619C-4201-AB94-11EF7709741B");
                 var response = await client.PostAsync(request);
 
                 var r = response.Content.ToString().Replace("\\\"", "\"");
@@ -1464,9 +1464,9 @@ namespace Fabic.Core.Controllers
                                 SaveOrUpdateIChooseChartItem(chart);
                             }
                         }
-                        if (json.Scales != null)
+                        if (json.scales != null)
                         {
-                            foreach (var chartJson in json.Scales)
+                            foreach (var chartJson in json.scales)
                             {
                                 BehaviourScale chart = new BehaviourScale
                                 {
@@ -1481,9 +1481,9 @@ namespace Fabic.Core.Controllers
                                 SaveOrUpdateBehaviourScale(chart);
                             }
                         }
-                        if (json.ScaleItems != null)
+                        if (json.scaleItems != null)
                         {
-                            foreach (var chartJson in json.ScaleItems)
+                            foreach (var chartJson in json.scaleItems)
                             {
                                 BehaviourScaleItem chart = new BehaviourScaleItem
                                 {
@@ -1495,7 +1495,7 @@ namespace Fabic.Core.Controllers
                                     BehaviourScale = chartJson.behaviourScale,
                                     BehaviourScaleLevel = chartJson.behaviourScaleLevel,
                                     BehaviourScaleType = chartJson.behaviourScaleType,
-                                    Name = chartJson.Name
+                                    Name = chartJson.name
                                 };
                                 SaveOrUpdateBehaviourScaleItem(chart);
                             }

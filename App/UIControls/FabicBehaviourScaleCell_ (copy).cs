@@ -68,7 +68,7 @@ namespace Fabic.iOS
                     UILabel label = new UILabel();
                     label.Frame = new CoreGraphics.CGRect(16, lastY + 3, width - 20, 20);
                     label.Font = UIFont.SystemFontOfSize(8);
-                    label.Text = item.Name.Trim();
+                    label.Text = item.Name?.Trim();
                     label.Lines = 100;
                     label.SizeToFit();
                     bullet.Frame = new CoreGraphics.CGRect(8, label.Frame.Y, label.Frame.Width, label.Frame.Height);
