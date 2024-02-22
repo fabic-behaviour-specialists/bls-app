@@ -25,6 +25,7 @@ namespace Fabic.Core.Controllers
         //private static MobileServiceSQLiteStore _Store;
         //private static MobileServiceUser _User;
         //public static MobileServiceClient _Client;
+        public const string APIKey = "668E745B-619C-4201-AB94-11EF7709741B";
         public const string MOBILE_APP_URL = "https://fabicapp.fierydevelopment.com:8888/api/"; //"http://172.23.115.123/BodyLifeSkillsPlatform.API/";//
         public async static Task<bool> InitialiseDatabase(bool withSync = true)
         {
@@ -1413,7 +1414,7 @@ namespace Fabic.Core.Controllers
                 var client = new RestClient(MOBILE_APP_URL + "management/syncuserdata");
                 var request = new RestRequest();
                 request.AddJsonBody(syncData);
-                request.AddHeader("X-API-KEY", "668E745B-619C-4201-AB94-11EF7709741B");
+                request.AddHeader("X-API-KEY", APIKey);
                 var response = await client.PostAsync(request);
 
                 var r = response.Content.ToString().Replace("\\\"", "\"");

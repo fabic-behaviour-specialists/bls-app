@@ -1,4 +1,5 @@
-﻿using Fabic.Core.Enumerations;
+﻿using AuthenticationServices;
+using Fabic.Core.Enumerations;
 using Fabic.Core.Helpers;
 using Fabic.Data.Enums;
 using Fabic.Data.Extensions;
@@ -112,37 +113,14 @@ namespace Fabic.Core.Models
             set
             {
                 _Keywords = value;
-                if (_Keywords == null) { _Keywords = new List<ItemHighlight>(); }
-                else
-                {
-                    _MutableText = new NSMutableAttributedString(ItemText, UIFont.SystemFontOfSize(9));
-                    foreach (ItemHighlight highlight in Keywords)
-                    {
-                        List<int> substrings = ItemText.AllIndexesOf(highlight.ItemText);
-                        if (substrings.Count > 0)
-                        {
-                            UIStringAttributes stringAttributes = new UIStringAttributes();
-                            if (highlight.Italics)
-                                stringAttributes.TextEffect = NSTextEffect.LetterPressStyle;
-                            if (highlight.WithColour)
-                                stringAttributes.ForegroundColor = UIColor.Black.FabicColour((FabicColour)highlight.FabicColour);
-                            if (highlight.Bold)
-                                stringAttributes.Font = UIFont.SystemFontOfSize(9, UIFontWeight.Bold);
-                            NSAttributedString s = new NSAttributedString(ItemText.Substring(substrings[0], highlight.ItemText.Length), stringAttributes);
-                            foreach (int i in substrings)
-                            {
-                                _MutableText.Replace(new NSRange(i, highlight.ItemText.Length), s);
-                            }
-                        }
-                    }
-                }
+                RefreshKeyWords();
             }
         }
         [JsonIgnore]
         private NSMutableAttributedString _MutableText;
         public NSMutableAttributedString MutableText
         {
-            get { return _MutableText; }
+            get { if (_MutableText == null) { _MutableText = new NSMutableAttributedString(ItemText, UIFont.SystemFontOfSize(9)); } return _MutableText; }
         }
 
         [Version]
@@ -153,5 +131,33 @@ namespace Fabic.Core.Models
 
         [UpdatedAt]
         public DateTime UpdatedAt { get; set; }
+
+        private void RefreshKeyWords()
+        {
+            if (_Keywords == null) { _Keywords = new List<ItemHighlight>(); }
+            else
+            {
+                _MutableText = new NSMutableAttributedString(ItemText, UIFont.SystemFontOfSize(9));
+                foreach (ItemHighlight highlight in Keywords)
+                {
+                    List<int> substrings = ItemText.AllIndexesOf(highlight.ItemText);
+                    if (substrings.Count > 0)
+                    {
+                        UIStringAttributes stringAttributes = new UIStringAttributes();
+                        if (highlight.Italics)
+                            stringAttributes.TextEffect = NSTextEffect.LetterPressStyle;
+                        if (highlight.WithColour)
+                            stringAttributes.ForegroundColor = UIColor.Black.FabicColour((FabicColour)highlight.FabicColour);
+                        if (highlight.Bold)
+                            stringAttributes.Font = UIFont.SystemFontOfSize(9, UIFontWeight.Bold);
+                        NSAttributedString s = new NSAttributedString(ItemText.Substring(substrings[0], highlight.ItemText.Length), stringAttributes);
+                        foreach (int i in substrings)
+                        {
+                            _MutableText.Replace(new NSRange(i, highlight.ItemText.Length), s);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

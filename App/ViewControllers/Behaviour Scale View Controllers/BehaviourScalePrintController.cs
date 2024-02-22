@@ -86,34 +86,31 @@ namespace Fabic.iOS
                 }
 
                 BigTed.BTProgressHUD.ShowContinuousProgress("Printing...", BigTed.MaskType.None);
-                byte[] result = null;
-                Task.Run(() =>
-                {
-                    result = printBehaviourScale();
-                    UIApplication.SharedApplication.InvokeOnMainThread(delegate
-                    {
+                byte[] result = await printBehaviourScale();
 
-                        BigTed.BTProgressHUD.Dismiss();
-                        if (result != null)
-                        {
-                            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                            var filePath = Path.Combine(documentsPath, DateTime.Now.ToFileTime().ToString() + ".pdf");
-                            File.WriteAllBytes(filePath, result);
-                            QLPreviewController previewController = new QLPreviewController();
-                            previewController.DataSource = new PDFPreviewControllerDataSource(new QLItem("Behaviour Scale Export", NSUrl.FromFilename(filePath)));
-                            previewController.DidDismiss += PreviewController_DidDismiss;
-                            this.PresentViewController(previewController, true, null);
-                        }
-                        else
-                        {
-                            string err = error;
-                            if (err.Length <= 0)
-                                err = "Opps! Something went wrong and we could not print your behaviour scale for you. Please try again later";
-                            UIAlertController alert = UIAlertController.Create("Unable to Print Behaviour Scale", err, UIAlertControllerStyle.Alert);
-                            alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (UIAlertAction action) => { alert.DismissViewControllerAsync(true); }));
-                            this.PresentModalViewController(alert, true);
-                        }
-                    });
+                UIApplication.SharedApplication.InvokeOnMainThread(delegate
+                {
+
+                    BigTed.BTProgressHUD.Dismiss();
+                    if (result != null)
+                    {
+                        var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        var filePath = Path.Combine(documentsPath, DateTime.Now.ToFileTime().ToString() + ".pdf");
+                        File.WriteAllBytes(filePath, result);
+                        QLPreviewController previewController = new QLPreviewController();
+                        previewController.DataSource = new PDFPreviewControllerDataSource(new QLItem("Behaviour Scale Export", NSUrl.FromFilename(filePath)));
+                        previewController.DidDismiss += PreviewController_DidDismiss;
+                        this.PresentViewController(previewController, true, null);
+                    }
+                    else
+                    {
+                        string err = error;
+                        if (err.Length <= 0)
+                            err = "Opps! Something went wrong and we could not print your behaviour scale for you. Please try again later";
+                        UIAlertController alert = UIAlertController.Create("Unable to Print Behaviour Scale", err, UIAlertControllerStyle.Alert);
+                        alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (UIAlertAction action) => { alert.DismissViewControllerAsync(true); }));
+                        this.PresentModalViewController(alert, true);
+                    }
                 });
             }
         }
@@ -124,7 +121,7 @@ namespace Fabic.iOS
         }
 
         string error = string.Empty;
-        private byte[] printBehaviourScale()
+        private async Task<byte[]> printBehaviourScale()
         {
             error = string.Empty;
             try
@@ -141,16 +138,16 @@ namespace Fabic.iOS
                 if (Fabic.iOS.Controllers.SecurityController.AccessTokenExpiry < DateTime.Now)
                     Fabic.iOS.Controllers.SecurityController.RefreshAccessToken();
 
-                var client = new RestClient(FabicDatabaseController.MOBILE_APP_URL + "api/behaviourscalereport");
+                var client = new RestClient(FabicDatabaseController.MOBILE_APP_URL + "behaviourscale/report");
                 var request = new RestRequest();
                 request.AddHeader("access_token", SecurityController.AccessToken);
                 request.AddHeader("userId", SecurityController.CurrentUser.UserID);
-                request.AddHeader("ZUMO-API-VERSION", "2.0.0");
+                request.AddHeader("X-API-KEY", FabicDatabaseController.APIKey);
                 request.AddHeader("id", reportBS.Id);
                 request.AddJsonBody(reportBS);
-                request.Method = Method.Post;
+                request.Method = Method.Get;
 
-                byte[] response = client.DownloadData(request);
+                byte[] response = await client.DownloadDataAsync(request);
 
                 if (response != null)
                     return response;
