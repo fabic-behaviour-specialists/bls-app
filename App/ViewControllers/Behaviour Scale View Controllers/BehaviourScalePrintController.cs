@@ -84,7 +84,7 @@ namespace Fabic.iOS
                     if (!this.BehaviourScaleItemsToPrint.Contains(item))
                         this.BehaviourScaleItemsToPrint.Add(item);
                 }
-
+                
                 BigTed.BTProgressHUD.ShowContinuousProgress("Printing...", BigTed.MaskType.None);
                 byte[] result = await printBehaviourScale();
 
@@ -97,8 +97,10 @@ namespace Fabic.iOS
                         var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                         var filePath = Path.Combine(documentsPath, DateTime.Now.ToFileTime().ToString() + ".pdf");
                         File.WriteAllBytes(filePath, result);
-                        QLPreviewController previewController = new QLPreviewController();
-                        previewController.DataSource = new PDFPreviewControllerDataSource(new QLItem("Behaviour Scale Export", NSUrl.FromFilename(filePath)));
+                        QLPreviewController previewController = new QLPreviewController
+                        {
+                            DataSource = new PDFPreviewControllerDataSource(new QLItem("Behaviour Scale Export", NSUrl.FromFilename(filePath)))
+                        };
                         previewController.DidDismiss += PreviewController_DidDismiss;
                         this.PresentViewController(previewController, true, null);
                     }
@@ -106,7 +108,7 @@ namespace Fabic.iOS
                     {
                         string err = error;
                         if (err.Length <= 0)
-                            err = "Opps! Something went wrong and we could not print your behaviour scale for you. Please try again later";
+                            err = "Oops! Something went wrong and we could not print your behaviour scale for you. Please try again later";
                         UIAlertController alert = UIAlertController.Create("Unable to Print Behaviour Scale", err, UIAlertControllerStyle.Alert);
                         alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (UIAlertAction action) => { alert.DismissViewControllerAsync(true); }));
                         this.PresentModalViewController(alert, true);
@@ -147,7 +149,10 @@ namespace Fabic.iOS
                 request.AddJsonBody(reportBS);
                 request.Method = Method.Get;
 
-                byte[] response = await client.DownloadDataAsync(request);
+                var result = await client.GetAsync(request);
+                string responseString = result.Content.Replace("\"", "");
+
+                byte[] response = Convert.FromBase64String(responseString);
 
                 if (response != null)
                     return response;

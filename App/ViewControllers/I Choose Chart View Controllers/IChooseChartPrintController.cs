@@ -106,7 +106,7 @@ namespace Fabic.iOS
                     {
                         string err = error;
                         if (err.Length <= 0)
-                            err = "Opps! Something went wrong and we could not print your I Choose Chart for you. Please try again later";
+                            err = "Oops! Something went wrong and we could not print your I Choose Chart for you. Please try again later";
                         UIAlertController alert = UIAlertController.Create("Unable to Print I Choose Chart", err, UIAlertControllerStyle.Alert);
                         alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (UIAlertAction action) => { alert.DismissViewControllerAsync(true); }));
                         this.PresentModalViewController(alert, true);
@@ -161,7 +161,10 @@ namespace Fabic.iOS
                 request.AddJsonBody(chartReport);
                 request.Method = Method.Get;
 
-                byte[] response = await client.DownloadDataAsync(request);
+                var result = await client.GetAsync(request);
+                string responseString = result.Content.Replace("\"", "");
+
+                byte[] response = Convert.FromBase64String(responseString);
 
                 if (response != null)
                     return response;
