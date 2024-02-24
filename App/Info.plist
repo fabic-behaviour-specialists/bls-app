@@ -69,7 +69,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>Need your face to unlock secrets!</string>
 	<key>CFBundleVersion</key>
-	<string>2.15</string>
+	<string>2.16</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.15</string>
 	<key>XSAppIconAssets</key>

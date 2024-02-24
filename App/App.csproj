@@ -13,7 +13,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <ProvisioningType>automatic</ProvisioningType>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,8 +26,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>Apple Development: Tanya  Curtis (LKQW39V94V)</CodesignKey>
-    <CodesignProvision>VS: au.com.fabicbehaviourspecialists.fabicapp Development</CodesignProvision>
+    <CodesignKey>Apple Distribution: FABIC PTY LTD (3JEJ2RMZ7D)</CodesignKey>
+    <CodesignProvision>Fabic App Distribution</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

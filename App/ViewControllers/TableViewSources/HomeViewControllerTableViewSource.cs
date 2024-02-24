@@ -65,15 +65,15 @@ namespace Fabic.iOS.ViewControllers.TableViewSources
                         help.TouchDown += Help_TouchDown;
                         cell.ContentView.Add(help);
                         break;
+                    //case 4:
+                    //    FabicButton aboutApp = new FabicButton();
+                    //    aboutApp.FabicColour = Data.Enums.FabicColour.Gray;
+                    //    aboutApp.SetTitle("About Fabic", UIControlState.Normal);
+                    //    aboutApp.Frame = new CGRect(centerX - (aboutApp.Frame.Width / 2), centerY - (aboutApp.Frame.Height / 2), aboutApp.Frame.Width, aboutApp.Frame.Height);
+                    //    aboutApp.TouchDown += AboutApp_TouchDown;
+                    //    cell.ContentView.Add(aboutApp);
+                    //    break;
                     case 4:
-                        FabicButton aboutApp = new FabicButton();
-                        aboutApp.FabicColour = Data.Enums.FabicColour.Gray;
-                        aboutApp.SetTitle("About Fabic", UIControlState.Normal);
-                        aboutApp.Frame = new CGRect(centerX - (aboutApp.Frame.Width / 2), centerY - (aboutApp.Frame.Height / 2), aboutApp.Frame.Width, aboutApp.Frame.Height);
-                        aboutApp.TouchDown += AboutApp_TouchDown;
-                        cell.ContentView.Add(aboutApp);
-                        break;
-                    case 5:
                         FabicButton aboutBLS = new FabicButton();
                         aboutBLS.FabicColour = Data.Enums.FabicColour.Gray;
                         aboutBLS.Font = UIFont.SystemFontOfSize(16);
@@ -130,7 +130,7 @@ namespace Fabic.iOS.ViewControllers.TableViewSources
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return 6;
+            return 5;
         }
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
