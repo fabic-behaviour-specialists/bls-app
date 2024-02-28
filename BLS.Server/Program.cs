@@ -1,6 +1,7 @@
 using AspNetCore.Authentication.ApiKey;
 using BLS.Server.Security;
 using BLS.Server.Services;
+using NReco.Logging.File;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,8 @@ builder.Services.AddAuthentication(ApiKeyDefaults.AuthenticationScheme)
 
 builder.Services.AddControllers();
 
-builder.Services.AddLogging(builder => builder.AddConsole());
+builder.Services.AddLogging(builder => { builder.AddConsole();
+    builder.AddFile("app.log", append: true); });
 
 builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 

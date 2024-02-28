@@ -38,6 +38,8 @@ namespace BLS.Server.Controllers
                     rawJSON = await inputStream.ReadToEndAsync();
                 }
 
+                _logger.Log(LogLevel.Information, rawJSON);
+
                 BehaviourScaleReport? scale = null;
                 if (rawJSON.Length > 0)
                 {
@@ -51,13 +53,13 @@ namespace BLS.Server.Controllers
                     }
                 }
 
-                List<BehaviourScaleItem> items = new List<BehaviourScaleItem>();
+                List<BehaviourScaleItem> items = [];
 
                 if (scale != null)
                 {
                     items = scale.Items;
 
-                    BodyLifeSkillsChart chart = new BodyLifeSkillsChart();
+                    BodyLifeSkillsChart chart = new();
                     chart.lblTitle.Text = scale.Name;
 
                     List<BehaviourScaleItem> lifeItems5 = items.Where(x => x.BehaviourScaleLevel == 5 && x.BehaviourScaleType == 1).ToList();

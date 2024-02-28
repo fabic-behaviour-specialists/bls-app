@@ -1,0 +1,26 @@
+2024-02-28T06:57:15.1934776+01:00	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7052
+2024-02-28T06:57:15.1969752+01:00	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5277
+2024-02-28T06:57:15.3179499+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2024-02-28T06:57:15.3215906+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2024-02-28T06:57:15.3249250+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Projects\Fabic\BodyLifeSkillsPlatform.iOS\BLS.Server
+2024-02-28T07:00:18.1710678+01:00	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: https://localhost:7052
+2024-02-28T07:00:18.1743967+01:00	INFO	[Microsoft.Hosting.Lifetime]	[ListeningOnAddress]	Now listening on: http://localhost:5277
+2024-02-28T07:00:18.3949897+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
+2024-02-28T07:00:18.3980923+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
+2024-02-28T07:00:18.4008795+01:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Projects\Fabic\BodyLifeSkillsPlatform.iOS\BLS.Server
+2024-02-28T07:00:56.6430649+01:00	INFO	[BLS.Server.Controllers.BehaviourScaleController]	[0]	{
+    "Id": "kjnrgkkjrgjkrng",
+    "Name": "Test Behaviour Scale",
+    "Description": "Test Description",
+    "FabicExample": false,
+    "Archived": false,
+    "Migrated": false,
+    "Items": [{
+        "Id": "kjndfklgnknfguyfuy",
+        "BehaviourScale": "kjnrgkkjrgjkrng",
+        "Name": "Test Item",
+        "BehaviourScaleLevel": 4,
+        "BehaviourScaleType": 1,
+        "Archived": false
+    }]
+}
