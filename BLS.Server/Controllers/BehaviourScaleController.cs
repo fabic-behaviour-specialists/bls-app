@@ -3,6 +3,7 @@ using BLS.Server.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
 
@@ -38,14 +39,43 @@ namespace BLS.Server.Controllers
                     rawJSON = await inputStream.ReadToEndAsync();
                 }
 
-                _logger.Log(LogLevel.Information, rawJSON);
+                JObject json = JObject.Parse(rawJSON);
+                json.Property("createdAt")?.Remove();
+                json.Property("updatedAt")?.Remove();
+
+                var jsonItems = json.Property("items");
+                var newArray = new JArray();
+
+                if (jsonItems != null)
+                {
+                    var allItems = jsonItems.Children();
+                    foreach (var item in allItems)
+                    {
+                        var itemsObject = item.ToObject<JArray>();
+                        if (itemsObject != null)
+                        {
+                            foreach (var subItem in itemsObject)
+                            {
+                                var itemObject = subItem.ToObject<JObject>();
+                                itemObject?.Property("createdAt")?.Remove();
+                                itemObject?.Property("updatedAt")?.Remove();
+                                newArray.Add(itemObject);
+                            }
+                        }
+                    }
+                }
+                json.Property("items")?.Remove();
+                json.Add("items", newArray);
+
+                string processedJson = json.ToString();
+                _logger.Log(LogLevel.Information, processedJson);
 
                 BehaviourScaleReport? scale = null;
-                if (rawJSON.Length > 0)
+                if (processedJson.Length > 0)
                 {
                     try
                     {
-                        scale = JsonConvert.DeserializeObject<BehaviourScaleReport>(rawJSON);
+                        scale = JsonConvert.DeserializeObject<BehaviourScaleReport>(processedJson);
                     }
                     catch (Exception ex)
                     {
