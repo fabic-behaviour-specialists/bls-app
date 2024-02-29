@@ -20,3 +20,4 @@
 /BLS.Server/publish
 /BLS.Server/Properties/PublishProfiles
 /App/bin
+/BLS.Server/app.log
